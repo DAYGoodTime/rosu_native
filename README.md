@@ -16,11 +16,11 @@ pub struct OsuMap {
     /// accuracy
     acc: f64,
     /// miss count
-    miss: u32,
+    miss: usize,
     /// scores max combo
-    combo: u32,
+    combo: usize,
     /// map max combo
-    max_combo: u32,
+    max_combo: usize,
 }
 ```
 output format:

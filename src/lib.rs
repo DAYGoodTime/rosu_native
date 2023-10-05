@@ -16,9 +16,9 @@ pub struct OsuMap {
     path: *const c_char,
     mods: u32,
     acc: f64,
-    miss: u32,
-    combo: u32,
-    max_combo: u32,
+    miss: usize,
+    combo: usize,
+    max_combo: usize,
 }
 
 #[repr(C)]
@@ -62,12 +62,13 @@ pub extern "C" fn cal_pp(map_args: *const OsuMap) -> *const PPResult {
                 panic!("Error while parsing map: {}", err);
             }
         };
+        let debug = format!("mods {} combo {} miss {} acc {} max_combo {}",map.mods,map.combo,map.miss,map.acc,map.max_combo);
         // The rest stays the same
         let result = osumap
             .pp()
             .mods(map.mods) // HDHR
-            .combo(map.combo as usize)
-            .n_misses(map.miss as usize)
+            .combo(map.combo)
+            .n_misses(map.miss)
             .accuracy(map.acc)
             .calculate();
         let stdres = match result.clone() {
@@ -87,8 +88,8 @@ pub extern "C" fn cal_pp(map_args: *const OsuMap) -> *const PPResult {
             .mods(map.mods)
             .attributes(result.clone())
             .accuracy(map.acc)
-            .combo(map.max_combo as usize)
-            .n_misses(map.miss as usize)
+            .combo(map.max_combo)
+            .n_misses(map.miss)
             .calculate();
         let pp_result = PPResult {
             pp: result.pp(),
@@ -98,7 +99,7 @@ pub extern "C" fn cal_pp(map_args: *const OsuMap) -> *const PPResult {
             pp_fc: if_fc.pp(),
             max_pp: max_pp_result,
             map_star: if_fc.stars(),
-            debug_text: mk_ptr_str("OK"),
+            debug_text: mk_ptr_string(debug),
         };
         Box::into_raw(Box::new(pp_result))
     }
