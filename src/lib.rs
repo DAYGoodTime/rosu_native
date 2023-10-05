@@ -30,10 +30,10 @@ pub struct PPResult {
     pub pp_aim: f64,
     /// The speed portion of the final pp.
     pub pp_speed: f64,
-    /// Max pp
-    pub max_pp: f64,
     /// pp if fc
     pub pp_fc: f64,
+    /// Max pp
+    pub max_pp: f64,
     /// map star
     pub map_star: f64,
     /// debug text
