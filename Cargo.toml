@@ -1,0 +1,13 @@
+[package]
+name = "rosu_native"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name="rosu_native"
+crate-type = ["cdylib"]
+
+[dependencies]
+libc = "0.2.148"
+rosu-pp = "0.9.5"
+tokio = { version = "1.2", default-features = false, features = ["fs", "rt","rt-multi-thread"] }
