@@ -107,9 +107,8 @@ checksum = "8afb450f006bf6385ca15ef45d71d2288452bc3683ce2e2cacc0d18e4be60b58"
 
 [[package]]
 name = "rosu-pp"
-version = "0.9.5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "be9e281b71d3797817a1e6615dd8fb081dd61359b4c41d08792cc7c3c1c13b4e"
+version = "1.0.1"
+source = "git+https://github.com/ppy-sb/rosu-pp#6572d4a3238b136d8023f8155daa7c23abfd950d"
 
 [[package]]
 name = "rosu_native"

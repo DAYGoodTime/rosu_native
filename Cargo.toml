@@ -9,5 +9,5 @@ crate-type = ["cdylib"]
 
 [dependencies]
 libc = "0.2.148"
-rosu-pp = "0.9.5"
+rosu-pp = {git = "https://github.com/ppy-sb/rosu-pp"}
 tokio = { version = "1.2", default-features = false, features = ["fs", "rt","rt-multi-thread"] }
